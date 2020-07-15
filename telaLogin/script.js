@@ -10,26 +10,25 @@ let armz = [
 
 
 function validacao() {
-    for (i=0; i<armz.length; i++){
-        if (armz[i].nome == username.value && armz[i].senha == password.value){
-            window.alert('Login efetuado com sucesso!')
-            
-        }
-        else if (armz[i].nome == username.value && armz[i].senha != password.value){
-            window.alert('Senha incorreta!')            
-            username.value = null
-            password.value = null
-        }
-        else if (armz[i].nome != username.value && armz[i].senha == password.value){
-            window.alert('Nome de usuário incorreto!')
-            username.value = null
-            password.value = null
-            
-        }
-        
-        else{
-            continue;
-        }
+    let flagLogin = 1    
+    if (username.value == '' || password.value == ''){
+        window.alert('Preencha todas as informações')        
     }
+    else{    
+        for (i=0; i<armz.length; i++){            
+            if (armz[i].nome == username.value) {
+                flagLogin = 0
+                if (armz[i].senha == password.value){
+                    window.alert('Login efetuado com sucesso!')                
+                }
+                else{
+                    window.alert('Senha incorreta!')                
+                }
+                
+            }        
+        }        
+        if (flagLogin){
+            window.alert('Usuário incorreto!')
+        }
+    }    
 }
-
